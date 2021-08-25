@@ -1,10 +1,10 @@
 import { Cliente } from './Cliente.js'
 import { ContaCorrente } from './ContaCorrente.js'
 
-const cliente1 = new Cliente("Bob", 11122233344);
+const cliente1 = new Cliente("Alice", 11122233344);
 console.log("Dados do cliente: ", cliente1);
 
-const cliente2 = new Cliente("Alice", 11122233355);
+const cliente2 = new Cliente("Bob", 11122233355);
 console.log("Dados do cliente: ", cliente2);
 
 const conta1 = new ContaCorrente(1001, cliente1);
