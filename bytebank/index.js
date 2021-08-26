@@ -1,19 +1,18 @@
-import { Cliente } from './Cliente.js'
-import { ContaCorrente } from './ContaCorrente.js'
+import {Cliente} from "./Cliente.js";
+import {Gerente} from "./Funcionario/Gerente.js"
+import {Diretor} from "./Funcionario/Diretor.js"
+import {Autenticacao} from "./Autenticacao.js"
 
-const cliente1 = new Cliente("Alice", 11122233344);
-console.log("Dados do cliente: ", cliente1);
+const diretor =  new Diretor("Bob", 1000, 12345678910);
+diretor.cadastrarSenha("123456")
+const gerente =  new Gerente("Alice",  500, 12378945601);
+gerente.cadastrarSenha("654321");
 
-const cliente2 = new Cliente("Bob", 11122233355);
-console.log("Dados do cliente: ", cliente2);
+const cliente = new Cliente("Carlos", 78945612379, "456");
+const gerenteEstaLogado = Autenticacao.login(gerente, "123");
+const diretorEstaLogado = Autenticacao.login(diretor, "123456");
 
-const conta1 = new ContaCorrente(1001, cliente1);
-conta1.depositar(500);
-console.log("Conta de ", cliente1.nome, "tem R$", conta1.saldo);
 
-const conta2 = new ContaCorrente(1002, cliente2);
-console.log("Conta de ", cliente2.nome, "tem R$", conta2.saldo);
+const clienteEstaLogado = Autenticacao.login(cliente, "456");
 
-conta1.transferir(200, conta2);
-console.log("Após transferir da conta de", conta1.cliente.nome, "conta de", conta2.cliente.nome, "tem R$", conta2.saldo);
-console.log("Número de Contas Correntes: ", ContaCorrente.nContas);
+console.log(gerenteEstaLogado, diretorEstaLogado, clienteEstaLogado);
